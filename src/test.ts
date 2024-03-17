@@ -1,1 +1,1 @@
-export const testFn = (text: string) => console.log('webpack build, test text:', text)
+export const testFn = (text: string) => console.log(`%cwebpack build, test text: ${text}`, 'color:green')

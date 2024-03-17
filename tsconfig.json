@@ -4,8 +4,6 @@
     // in this version code will be compiled(es5 to make more browsers understand code)
     "target": "es5",
     "module": "es6",
-    // property to configure absolute paths
-    "baseUrl": ".",
     // disables usage of variables with unset type
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,

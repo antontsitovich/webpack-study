@@ -3,12 +3,13 @@ import webpack from "webpack";
 import {buildPlugins} from "./buildPlugins";
 import {buildLoaders} from "./buildLoaders";
 import {buildResolvers} from "./buildResolvers";
+import {buildDevServer} from "./buildDevServer";
 
 export const buildWebpackConfig = (options: BuildOptions):webpack.Configuration => {
 return  {
     // mode - this property defines how webpack will bundle application. Can be dev and prod
     // Production mode will make webpack optimize(minify) code
-    mode: 'development',
+    mode: options.mode,
     // entry - property that is responsible for setting entry point of the app
     // __dirname - current folder
     entry: options.paths.entry,
@@ -34,6 +35,12 @@ return  {
         rules: buildLoaders()
     },
     // these settings are necessary to implement typescript
-    resolve: buildResolvers()
+    resolve: buildResolvers(),
+    // inline-source-map provides a way to see errors stack trace in bundled files.
+    // without source maps: a.js, b.js ---> bundle.js ---> error in bundle.js
+    // with source maps: a.js, b.js ---> bundle.js ---> error in bundle.js ---> error in a.js
+    devtool: options.isDev ? 'inline-source-map' : undefined,
+    // devServer is needed for hot replacement of code while running in browser
+    devServer: options.isDev ? buildDevServer(options) : undefined,
 }
 }

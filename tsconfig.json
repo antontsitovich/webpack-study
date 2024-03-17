@@ -1,0 +1,33 @@
+// this file is used to configure typescript and enable it in the project
+{
+  "compilerOptions": {
+    // in this version code will be compiled(es5 to make more browsers understand code)
+    "target": "es5",
+    "module": "es6",
+    // property to configure absolute paths
+    "baseUrl": ".",
+    // disables usage of variables with unset type
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    // allow usage of special jsx syntax that is used to build components
+    "jsx": "react-jsx",
+    // allow compiler to handle both ts and js files
+    "allowJs": true,
+    // defines import types
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    // allow to work with imported by default instances
+    // esModuleInterop: false ---> import Moment from 'moment' ---> undefined
+    // esModuleInterop: true ---> import Moment from 'moment' ---> [Object Object]
+    "esModuleInterop": true,
+    // allow default import(import * as React from "react" ---> import React from 'React')
+    "allowSyntheticDefaultImports": true
+  },
+  // these settings configure the ways typescript code is compiled by ts-node
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
